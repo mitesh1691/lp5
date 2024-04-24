@@ -1,5 +1,4 @@
 
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -79,3 +78,15 @@ int main() {
 
     return 0;
 }
+
+
+// how to run: 
+// open terminal - 
+
+// run this: 
+// nvcc code.cu -o code
+
+// then this: 
+// ./code
+
+// NOTE - save the .cu file in the home directory only (file manager open karne par jo open hota hai wahi pe save karna .cu file kahi bhi mat save kro)
