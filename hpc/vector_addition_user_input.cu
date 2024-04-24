@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -12,18 +14,8 @@ __global__ void add(int* A, int* B, int* C, int size) {
     }
 }
 
-// Original initialize function
-/*
-void initialize(int* vector, int size) {
-    for (int i = 0; i < size; i++) {
-        vector[i] = rand() % 10;
-    }
-}
-*/
-
-// New function to initialize vectors with random elements
-void initializeRandom(int* vector, int size) {
-    srand(time(0));
+void initializeRandom(int* vector, int size, int seed) {
+    srand(seed);
     for (int i = 0; i < size; i++) {
         vector[i] = rand() % 100; // Generating random numbers between 0 to 99
     }
@@ -50,9 +42,9 @@ int main() {
     B = new int[vectorSize];
     C = new int[vectorSize];
 
-    // Use the new function to initialize vectors with random elements
-    initializeRandom(A, vectorSize);
-    initializeRandom(B, vectorSize);
+    // Use the new function to initialize vectors with different random elements
+    initializeRandom(A, vectorSize, 1234); // Use different seed for vector A
+    initializeRandom(B, vectorSize, 5678); // Use different seed for vector B
 
     cout << "Vector A: ";
     print(A, N);
@@ -87,16 +79,3 @@ int main() {
 
     return 0;
 }
-
-
-
-// how to run: 
-// open terminal - 
-
-// run this: 
-// nvcc code.cu -o code
-
-// then this: 
-// ./code
-
-// NOTE - save the .cu file in the home directory only (file manager open karne par jo open hota hai wahi pe save karna .cu file kahi bhi mat save kro)
